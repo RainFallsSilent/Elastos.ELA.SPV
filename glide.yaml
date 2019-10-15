@@ -8,8 +8,9 @@ import:
 - package: github.com/syndtr/goleveldb/leveldb
 - package: github.com/cevaris/ordered_map
 - package: github.com/mattn/go-sqlite3
+- package: github.com/davecgh/go-spew/spew
 - package: github.com/elastos/Elastos.ELA
-  version: dev
+  version: v0.5.0
   subpackages:
   - bloom
   - core
