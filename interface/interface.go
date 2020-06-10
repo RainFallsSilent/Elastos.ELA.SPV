@@ -2,8 +2,7 @@ package _interface
 
 import (
 	"github.com/elastos/Elastos.ELA.SPV/bloom"
-	"github.com/elastos/Elastos.ELA.SPV/database"
-
+	"github.com/elastos/Elastos.ELA.SPV/interface/store"
 	"github.com/elastos/Elastos.ELA/common"
 	"github.com/elastos/Elastos.ELA/common/config"
 	"github.com/elastos/Elastos.ELA/core/types"
@@ -55,7 +54,7 @@ type SPVService interface {
 	GetTransactionIds(height uint32) ([]*common.Uint256, error)
 
 	// Get headers database
-	HeaderStore() database.Headers
+	HeaderStore() store.HeaderStore
 
 	// Start the SPV service
 	Start()

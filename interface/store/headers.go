@@ -221,6 +221,24 @@ func (cache *cache) get(hash *common.Uint256) (*util.Header, error) {
 	return sh.(*util.Header), nil
 }
 
+func (cache *cache) getByHeight(height uint32) (*util.Header, error) {
+	iter := cache.headers.IterFunc()
+	if iter == nil {
+		return nil, errors.New("Header not found in cache ")
+	}
+
+	for k, ok := iter(); ok; k, ok = iter() {
+		header := k.Value.(*util.Header)
+		if header == nil {
+			continue
+		}
+		if header.Height == height {
+			return header, nil
+		}
+	}
+	return nil, errors.New("Header not found in cache ")
+}
+
 func toKey(bucket []byte, index ...byte) []byte {
 	return append(bucket, index...)
 }
